@@ -13,6 +13,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :item_scheduled_delivery
 
+  validates :image, presence: true
   validates :item_name, presence: true, length: { maximum: 40 }
   validates :item_info, presence: true, length: { maximum: 1000 }
   validates :item_category_id, numericality: { other_than: 1, message: "can't be blank" } 
