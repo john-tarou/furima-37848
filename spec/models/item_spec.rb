@@ -27,28 +27,28 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Item info can't be blank")
       end
-      it 'カテゴリーの情報が空では保存できない' do
-        @item.item_category_id = ''
+      it 'カテゴリーの情報が「---」では保存できない' do
+        @item.item_category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Item category can't be blank")
       end
-      it '商品の状態の情報が空では保存できない' do
-        @item.item_sales_status_id = ''
+      it '商品の状態の情報がで「---」は保存できない' do
+        @item.item_sales_status_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Item sales status can't be blank")
       end
-      it '配送料の負担の情報が空では保存できない' do
-        @item.item_shipping_fee_status_id = ''
+      it '配送料の負担の情報が「---」では保存できない' do
+        @item.item_shipping_fee_status_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Item shipping fee status can't be blank")
       end
-      it '発送元の地域の情報が空では保存できない' do
-        @item.item_prefecture_id = ''
+      it '発送元の地域の情報が「---」では保存できない' do
+        @item.item_prefecture_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Item prefecture can't be blank")
       end
-      it '発送までの日数の情報が空では保存できない' do
-        @item.item_scheduled_delivery_id = ''
+      it '発送までの日数の情報が「---」では保存できない' do
+        @item.item_scheduled_delivery_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Item scheduled delivery can't be blank")
       end
