@@ -60,17 +60,17 @@ RSpec.describe Item, type: :model do
       it '価格の情報は全角数字では保存できない' do
         @item.item_price = '１１１１'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item price is not a number")
+        expect(@item.errors.full_messages).to include('Item price is not a number')
       end
       it '価格の情報は¥300以下では保存できない' do
         @item.item_price = '100'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Item price must be greater than or equal to 300')
       end
       it '価格の情報は¥10,000,000以上では保存できない' do
-        @item.item_price = "10000000"
+        @item.item_price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Item price must be less than or equal to 9999999')
       end
       it 'userが紐付いていないと保存できない' do
         @item.user = nil
