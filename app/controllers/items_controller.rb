@@ -22,6 +22,10 @@ class ItemsController < ApplicationController
     @items = Item.find(params[:id])
   end
 
+  def edit
+    @items = Item.find(params[:id])
+  end
+
   private
 
   def item_params
