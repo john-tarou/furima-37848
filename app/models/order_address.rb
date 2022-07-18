@@ -1,6 +1,6 @@
-class orderAddress
+class OrderAddress
   include ActiveModel::Model
-  attr_accwssor :item_id, :user_id, :post_code, :item_prefecture_id, :city, :addresses, :building, :phone_number
+  attr_accessor :item_id, :user_id, :post_code, :item_prefecture_id, :city, :addresses, :building, :phone_number
 
   with_options presence: true do
     validates :item_id
