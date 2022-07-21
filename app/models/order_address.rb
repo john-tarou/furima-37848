@@ -10,7 +10,7 @@ class OrderAddress
     validates :addresses
     validates :phone_number, numericality: { only_integer: true}, length: { minimum: 10, maximum: 11 }
   end
-  validates :item_prefecture_id, numericality: {other_than: 0, message: "can't be blank" }
+  validates :item_prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)
