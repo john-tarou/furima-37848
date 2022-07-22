@@ -131,7 +131,7 @@
        <% @items.each do |item|%>
          <li class='list'>  
             <%= link_to item_path(item.id),method: :get do %>
-              <% if item.image.attached? %>
+              <% if item.image.attached?  %>
                 <div class='item-img-content'>
                   <%= image_tag item.image, class: "item-img" %>
               <% else %>
