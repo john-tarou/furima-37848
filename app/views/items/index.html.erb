@@ -131,13 +131,15 @@
        <% @items.each do |item|%>
          <li class='list'>  
             <%= link_to item_path(item.id),method: :get do %>
-              <% if item.image.attached?  %>
-                <div class='item-img-content'>
-                  <%= image_tag item.image, class: "item-img" %>
-              <% else %>
-                    <div class='sold-out'>
-                      <span>Sold Out!!</span>
-                    </div>
+              <% if item.image.attached? %>
+              <div class='item-img-content'>
+               <%= image_tag item.image, class: "item-img" %>
+                 <% if @order_address.present? %>
+                  <% else %>
+                  <div class='sold-out'>
+                    <span>Sold Out!!</span>
+                  </div>
+                 <% end %>
               <% end %>
               </div>
               <div class='item-info'>

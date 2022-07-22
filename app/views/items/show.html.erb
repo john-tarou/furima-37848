@@ -9,10 +9,12 @@
     <div class="item-img-content">
      <% if @items.image.attached? %>
       <%= image_tag @items.image ,class:"item-box-img" %>
-       <% else %>
-      <div class="sold-out">
-        <span>Sold Out!!</span>
-      </div>
+        <% if @order_address.present? %>
+        <% else %>
+          <div class="sold-out">
+            <span>Sold Out!!</span>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div class="item-price-box">
