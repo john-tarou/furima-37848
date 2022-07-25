@@ -3,12 +3,12 @@ class OrdersController < ApplicationController
   before_action :move_to_root
 
   def index
-    @item = Item.find(params[:item_id])
+    item_find
     @order_address = OrderAddress.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
+    item_find
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       pay_item
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
   end
 
   def move_to_root
-    @item = Item.find(params[:item_id])
+    item_find
     redirect_to root_path if @item.user_id == current_user.id || !@item.order.nil?
   end
 
@@ -39,5 +39,9 @@ class OrdersController < ApplicationController
     params.require(:order_address).permit(:post_code, :item_prefecture_id, :city, :addresses, :building, :phone_number).merge(
       user_id: current_user.id, item_id: params[:item_id], token: params[:token]
     )
+  end
+
+  def item_find
+    @item = Item.find(params[:item_id])
   end
 end

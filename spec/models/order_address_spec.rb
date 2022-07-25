@@ -4,7 +4,10 @@ RSpec.describe OrderAddress, type: :model do
   describe '購入情報の保存' do
     before do
       user = FactoryBot.create(:user)
-      @order_address = FactoryBot.build(:order_address, user_id: user.id)
+      @item = FactoryBot.build(:item)
+      @item.save
+      @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id:@item.id)
+      sleep 0.1
     end
 
     context '内容に問題ない場合' do
@@ -53,12 +56,12 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
-      it '電話番号は10桁以下では保存できないこと' do
+      it '電話番号は9桁以下では保存できないこと' do
         @order_address.phone_number = '123456'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)')
       end
-      it '電話番号は11桁以上では保存できないこと' do
+      it '電話番号は12桁以上では保存できないこと' do
         @order_address.phone_number = '1234561234567'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
